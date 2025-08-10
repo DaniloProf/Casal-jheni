@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="fotos/img_fundo.png">
+    <title>Jhennifer & Christian</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+        .slideshow {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .slides {
+            display: none;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        #timer {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .heart {
+            color: red;
+            font-size: 24px;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .romantic-text {
+            margin: 20px;
+            font-size: 18px;
+        }
+        @media (max-width: 600px) {
+            #timer {
+                font-size: 20px;
+            }
+            .romantic-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Um Amor Eterno <span class="heart">❤️</span></h1>
+    <div class="slideshow">
+        <div class="slides">
+            <img src="fotos/momento1.jpeg" alt="Momento 1">
+        </div>
+        <div class="slides">
+            <img src="fotos/momento2.jpeg" alt="Momento 2">
+        </div>
+        <div class="slides">
+            <img src="fotos/momento3.jpeg" alt="Momento 3">
+        </div>
+                <div class="slides">
+            <img src="fotos/momento4.jpeg" alt="Momento 4">
+        </div>
+                <div class="slides">
+            <img src="fotos/momento5.jpeg" alt="Momento 5">
+        </div>
+    </div>
+
+    <div class="romantic-text">
+        <p>Nem nos meus melhores sonhos poderia imaginar ter algo tão lindo como temos hoje.<span class="heart">❤️</span></p>
+        <p>Você é minha melhor parte, vc é minha melhor escolha, e eu amo te amar, cada dia mais!❤️💍<span class="heart">❤️</span></p>
+    </div>
+
+    <div id="timer"></div>
+
+    <script>
+        // Slideshow
+        let slideIndex = 0;
+        function showSlides() {
+            const slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex - 1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Muda a imagem a cada 3 segundos
+        }
+        showSlides();
+
+        // Cronômetro
+        const startDate = new Date("2024-11-02T00:00:00");
+        function updateTimer() {
+            const now = new Date();
+            const difference = now - startDate;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            document.getElementById("timer").innerHTML = 
+                `${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+        }
+        setInterval(updateTimer, 1000);
+    </script>
+
+</body>
+</html>
